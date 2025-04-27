@@ -15,6 +15,12 @@ contract Upload {
 
   function add(address _user,string memory url) external {
       value[_user].push(url);
+      // Automatically grant access to the owner
+      ownership[_user][_user] = true;
+      if(!previousData[_user][_user]) {
+          accessList[_user].push(Access(_user, true));
+          previousData[_user][_user] = true;
+      }
   }
   function allow(address user) external {//def
       ownership[msg.sender][user]=true; 

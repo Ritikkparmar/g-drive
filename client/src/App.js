@@ -4,7 +4,7 @@ import { ethers } from "ethers";
 import FileUpload from "./components/FileUpload";
 import Display from "./components/Display";
 import Modal from "./components/Modal";
-import './App.css';
+import "./App.css";
 
 function App() {
   const [account, setAccount] = useState("");
@@ -21,7 +21,6 @@ function App() {
 
     const loadProvider = async () => {
       if (provider) {
-
         //Metamask ke through jb account chnage krnge to bina refesh ke account change ho jaye for this or chainchanged tb bhi bina refresh ke change ho jaye
         window.ethereum.on("chainChanged", () => {
           window.location.reload();
@@ -55,16 +54,32 @@ function App() {
 
   return (
     <>
-     {!modalOpen && (
-        <button className="share" onClick={() => setModalOpen(true)} style={{ cursor: 'pointer' }}>
+      {!modalOpen && (
+        <button
+          className="share"
+          onClick={() => setModalOpen(true)}
+          style={{ cursor: "pointer" }}
+        >
           Share
         </button>
       )}
       {modalOpen && (
         <Modal setModalOpen={setModalOpen} contract={contract}></Modal>
       )}
-    <div className="App">
-       <h1 style={{ color: "white" }}>Gdrive 3.0</h1>
+      <div className="App">
+        <h1
+          style={{
+            fontSize: "4rem",
+            fontWeight: "bold",
+            background: "linear-gradient(to right, #000000, #434343)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            marginBottom: "20px",
+          }}
+        >
+          Vaultify
+        </h1>
+
         <div class="bg"></div>
         <div class="bg bg2"></div>
         <div class="bg bg3"></div>
@@ -78,8 +93,10 @@ function App() {
           contract={contract}
         ></FileUpload>
         <Display contract={contract} account={account}></Display>
-       </div>
-       </>
+       
+      </div>
+  
+    </>
   );
 }
 
